@@ -3,6 +3,7 @@ from datetime import timedelta
 import os
 from celery import Celery
 import feedparser
+import requests
 
 app = Celery('worker')
 app.conf.update(
@@ -36,5 +37,16 @@ def check_feed():
     if d.entries:
         for item in d.entries:
             log.info("%s\t%s: %s", item.published, item.title, item.description)
+        send_simple_message()
     else:
         log.info("No entries")
+
+
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v2/sandbox38be6e72fd2d416a900adad83bdf4bda.mailgun.org/messages",
+        auth=("api", os.getenv("MAILGUN_API_KEY")),
+        data={"from": "Mailgun Sandbox <postmaster@sandbox38be6e72fd2d416a900adad83bdf4bda.mailgun.org>",
+              "to": "Damir Suleymanov <gbitle@gmail.com>",
+              "subject": "Hello Damir Suleymanov",
+              "text": "Google doesn't feel well"})
