@@ -1,5 +1,4 @@
 from flask import Flask
-import feedparser
 from tasks import smoke_test
 
 app = Flask(__name__)
