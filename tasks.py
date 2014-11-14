@@ -17,7 +17,7 @@ app.conf.update(
     CELERYBEAT_SCHEDULE={
         'add-every-30-seconds': {
             'task': 'tasks.check_feed',
-            'schedule': timedelta(seconds=30)
+            'schedule': timedelta(seconds=300)
         }
     }
 )
