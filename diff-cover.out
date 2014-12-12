@@ -1,12 +1,7 @@
--------------
 Diff Coverage
 Diff: origin/develop...HEAD, staged, and unstaged changes
--------------
 encryption/drive.py (100%)
 encryption/flask_config.py (50.0%): Missing lines 751
--------------
 Total:   3 lines
 Missing: 1 line
 Coverage: 66%
--------------
-
